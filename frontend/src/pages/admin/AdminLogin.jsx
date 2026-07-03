@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -11,13 +12,10 @@ export default function AdminLogin() {
   async function handleLogin() {
     setError("");
 
-    // =========================
-    // 1. AUTH LOGIN
-    // =========================
     const { data, error: authError } =
       await supabase.auth.signInWithPassword({
         email,
-        password
+        password,
       });
 
     if (authError || !data?.user) {
@@ -25,66 +23,86 @@ export default function AdminLogin() {
       return;
     }
 
-    // =========================
-    // 2. FETCH USER PROFILE
-    // =========================
-    const { data: profile, error: profileError } =
-      await supabase
-        .from("users")
-        .select("role, user_name")
-        .eq("auth_id", data.user.id)
-        .single();
+    const { data: profile } = await supabase
+      .from("users")
+      .select("role, user_name")
+      .eq("auth_id", data.user.id)
+      .single();
 
-    if (profileError || !profile) {
-      setError("Usuário não encontrado");
-      return;
-    }
-
-    // =========================
-    // 3. CHECK ADMIN ROLE
-    // =========================
-    if (profile.role !== "admin") {
+    if (!profile || profile.role !== "admin") {
       setError("Acesso negado");
       return;
     }
 
-    // =========================
-    // 4. STORE SESSION
-    // =========================
-    localStorage.setItem("session_user", JSON.stringify({
-      user_id: data.user.id,
-      role: profile.role,
-      user_name: profile.user_name
-    }));
+    localStorage.setItem(
+      "session_user",
+      JSON.stringify({
+        user_id: data.user.id,
+        role: profile.role,
+        user_name: profile.user_name,
+      })
+    );
 
-    navigate("/admin");
+    navigate("/");
   }
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Admin Login</h2>
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={{ padding: 8, marginTop: 10 }}
-      />
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
 
-      <input
-        type="password"
-        placeholder="Senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{ padding: 8, marginTop: 10 }}
-      />
+        padding: 20,
+        boxSizing: "border-box",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 420,
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+        }}
+      >
+        <h2 style={{ marginBottom: 10 }}>
+          Admin Login
+        </h2>
 
-      <button onClick={handleLogin} style={{ marginLeft: 10 }}>
-        Entrar
-      </button>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ padding: 12 }}
+        />
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        <input
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ padding: 12 }}
+        />
+
+        <button
+          onClick={handleLogin}
+          style={{ padding: 12 }}
+        >
+          Entrar
+        </button>
+
+        {error && (
+          <p style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
