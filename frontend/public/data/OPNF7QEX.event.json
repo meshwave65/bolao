@@ -245,7 +245,7 @@
           "id": "ee4de8e6-543f-46dd-ad08-72ebdb519408",
           "round_uuid": "0b8f8cc5-e76f-4020-9407-5531b935e346",
           "team_uuid": "66ad62e8-6487-4ca9-bc23-992ddaf85f94",
-          "value": "3",
+          "value": "2",
           "created_at": "2026-06-29T18:01:16.764772",
           "sequence_part": 1,
           "teams": {
@@ -312,8 +312,8 @@
       "local": "Estadio de Los Angeles - EUA",
       "round_date": "2026-07-02",
       "time_round": "16:00:00",
-      "score": null,
-      "result": null,
+      "score": "3x0",
+      "result": "1",
       "parts": [
         {
           "id": "0e65223e-3054-4676-8a9e-ace64802acc3",
@@ -349,8 +349,8 @@
       "local": "Estadio de Toronto - Canadá",
       "round_date": "2026-07-02",
       "time_round": "20:00:00",
-      "score": null,
-      "result": null,
+      "score": "2x1",
+      "result": "1",
       "parts": [
         {
           "id": "942894aa-7992-4e00-b121-6badc74170b1",
@@ -386,8 +386,8 @@
       "local": "Arena Pantanal - Cuiabá - BR",
       "round_date": "2026-07-02",
       "time_round": "20:00:00",
-      "score": null,
-      "result": null,
+      "score": "1x0",
+      "result": "1",
       "parts": [
         {
           "id": "233a98f2-49cc-4ea3-a0c8-c7d9ec0f953e",
