@@ -119,7 +119,7 @@ def run_event_created_async(code):
     try:
         print(f"🚀 EVENT CREATED: {code}")
 
-        engine_assets.run(code)
+        engine_assets.run_assets_engine(code, "DEFAULT")
         engine_workspaces.run_engine()
         engine_canguess_2_0.run_engine(code)
 
