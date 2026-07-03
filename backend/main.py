@@ -8,6 +8,15 @@ import requests
 import uuid
 import threading
 
+# =========================
+# ENV
+# =========================
+
+load_dotenv()
+
+WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
+VITE_BOLAO_SUPABASE_URL = os.getenv("VITE_BOLAO_SUPABASE_URL")
+VITE_BOLAO_SUPABASE_KEY = os.getenv("VITE_BOLAO_SUPABASE_ANON_KEY")
 
 # =========================
 # ENGINE PATH
@@ -18,7 +27,6 @@ ENGINES_DIR = os.path.join(BASE_DIR, "engines")
 
 sys.path.append(ENGINES_DIR)
 
-
 # =========================
 # ENGINES
 # =========================
@@ -27,22 +35,11 @@ import engine_canguess_2_0
 import engine_workspaces
 import engine_assets
 
-
-# =========================
-# ENV
-# =========================
-
-load_dotenv()
-
-VITE_BOLAO_SUPABASE_URL = os.getenv("VITE_BOLAO_SUPABASE_URL")
-VITE_BOLAO_SUPABASE_KEY = os.getenv("VITE_BOLAO_SUPABASE_ANON_KEY")
-
 HEADERS = {
     "apikey": VITE_BOLAO_SUPABASE_KEY,
     "Authorization": f"Bearer {VITE_BOLAO_SUPABASE_KEY}",
     "Content-Type": "application/json"
 }
-
 
 # =========================
 # APP
@@ -58,9 +55,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # =========================
-# HEALTH (IMPORTANTE)
+# HEALTH
 # =========================
 
 @app.get("/")
@@ -75,7 +71,6 @@ def health():
         "service": "canguess-engine",
         "engine": "2.0"
     }
-
 
 # =========================
 # COUNTRIES
@@ -109,7 +104,6 @@ async def create_country(payload: dict):
 
     return {"ok": True, "data": data}
 
-
 # =========================
 # WEBHOOKS
 # =========================
@@ -121,6 +115,20 @@ def run_engine_async(code):
         print("ENGINE ERROR:", e)
 
 
+def run_event_created_async(code):
+    try:
+        print(f"🚀 EVENT CREATED: {code}")
+
+        engine_assets.run(code)
+        engine_workspaces.run_engine()
+        engine_canguess_2_0.run_engine(code)
+
+        print("✅ EVENT CREATED FINISHED")
+
+    except Exception as e:
+        print("EVENT CREATE ERROR:", e)
+
+
 @app.post("/webhook/round-result")
 async def round_result(req: Request):
     data = await req.json()
@@ -130,10 +138,10 @@ async def round_result(req: Request):
     if not code:
         raise HTTPException(status_code=400, detail="missing code")
 
-    # NÃO bloqueia request HTTP
     threading.Thread(
         target=run_engine_async,
-        args=(code,)
+        args=(code,),
+        daemon=True
     ).start()
 
     return {"ok": True, "queued": True}
@@ -141,16 +149,21 @@ async def round_result(req: Request):
 
 @app.post("/webhook/workspace")
 async def workspace(req: Request):
-    try:
-        engine_workspaces.run_engine()
-    except Exception as e:
-        print("WORKSPACE ERROR:", e)
+
+    threading.Thread(
+        target=engine_workspaces.run_engine,
+        daemon=True
+    ).start()
 
     return {"ok": True}
 
 
 @app.post("/webhook/event-created")
 async def event_created(req: Request):
+
+    if req.headers.get("x-webhook-secret") != WEBHOOK_SECRET:
+        raise HTTPException(status_code=401, detail="unauthorized")
+
     data = await req.json()
 
     code = data.get("code")
@@ -158,9 +171,13 @@ async def event_created(req: Request):
     if not code:
         raise HTTPException(status_code=400, detail="missing code")
 
-    try:
-        create_event_assets.run(code)
-    except Exception as e:
-        print("EVENT CREATE ERROR:", e)
+    threading.Thread(
+        target=run_event_created_async,
+        args=(code,),
+        daemon=True
+    ).start()
 
-    return {"ok": True}
+    return {
+        "ok": True,
+        "queued": True
+    }

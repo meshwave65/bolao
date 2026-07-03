@@ -5,12 +5,15 @@ import { supabase } from "./lib/supabase";
 export default function EventDashboard() {
   const { eventId } = useParams();
   const navigate = useNavigate();
+
   const [event, setEvent] = useState(null);
   const [phases, setPhases] = useState([]);
   const [rounds, setRounds] = useState([]);
   const [selectedPhaseId, setSelectedPhaseId] = useState(null);
   const [viewLevel, setViewLevel] = useState("phases");
 
+  const ENGINE_URL = "https://canguess-engines.onrender.com";
+  const ENGINE_SECRET = "canguess_engine_2026_secure_key_91x7";
   useEffect(() => {
     load();
   }, [eventId]);
@@ -21,6 +24,7 @@ export default function EventDashboard() {
       .select("*")
       .eq("id", eventId)
       .single();
+
     setEvent(eventData);
 
     const { data: phasesData } = await supabase
@@ -28,10 +32,31 @@ export default function EventDashboard() {
       .select("*")
       .eq("event_uuid", eventId)
       .order("phase_number", { ascending: true });
+
     setPhases(phasesData || []);
   }
 
-  // Atualizar campos do Evento (status e is_open)
+  // =========================
+  // ENGINE TRIGGER
+  // =========================
+  async function triggerEngine(code) {
+    try {
+      await fetch(`${ENGINE_URL}/webhook/event-created`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-webhook-secret": ENGINE_SECRET
+        },
+        body: JSON.stringify({ code })
+      });
+    } catch (err) {
+      console.error("ENGINE ERROR:", err);
+    }
+  }
+
+  // =========================
+  // UPDATE EVENT + TRIGGER
+  // =========================
   async function updateEventField(field, value) {
     const { error } = await supabase
       .from("events")
@@ -43,8 +68,13 @@ export default function EventDashboard() {
       alert("Erro ao atualizar evento");
       return;
     }
+
+    await load();
     alert(`${field} atualizado com sucesso!`);
-    load();
+
+    if (event?.code) {
+      await triggerEngine(event.code);
+    }
   }
 
   const selectedPhase = phases.find((p) => p.id === selectedPhaseId);
@@ -59,52 +89,58 @@ export default function EventDashboard() {
 
   async function savePhase() {
     if (!selectedPhase) return;
+
     const { error } = await supabase
       .from("event_phases")
       .update({
         phase_name: selectedPhase.phase_name,
         num_rounds: selectedPhase.num_rounds,
-        phase_number: selectedPhase.phase_number,
+        phase_number: selectedPhase.phase_number
       })
       .eq("id", selectedPhase.id);
+
     if (error) {
       alert("Erro ao salvar fase");
       return;
     }
+
     alert("Fase salva");
   }
 
   async function loadRounds() {
     if (!selectedPhase) return;
-    const { data, error } = await supabase
+
+    const { data } = await supabase
       .from("event_rounds")
       .select("*")
       .eq("event_phase_uuid", selectedPhase.id)
       .order("round_date", { ascending: true });
-    if (error) return;
+
     setRounds(data || []);
   }
 
   async function syncRounds() {
     if (!selectedPhase) return;
-    const { count, error } = await supabase
+
+    const { count } = await supabase
       .from("event_rounds")
       .select("*", { count: "exact", head: true })
       .eq("event_phase_uuid", selectedPhase.id);
-    if (error) return;
 
-    const current_count = count || 0;
-    const new_rounds = Number(selectedPhase.num_rounds || 0);
+    const current = count || 0;
+    const target = Number(selectedPhase.num_rounds || 0);
 
-    if (new_rounds > current_count) {
-      const total = new_rounds - current_count;
-      for (let i = 0; i < total; i++) {
+    if (target > current) {
+      const diff = target - current;
+
+      for (let i = 0; i < diff; i++) {
         await supabase.from("event_rounds").insert({
           event_phase_uuid: selectedPhase.id,
-          event_parts_count: 2,
+          event_parts_count: 2
         });
       }
     }
+
     await loadRounds();
     setViewLevel("rounds");
   }
@@ -124,7 +160,7 @@ export default function EventDashboard() {
         time_round: round.time_round,
         local: round.local,
         event_parts_count: Number(round.event_parts_count || 2),
-        result_round: round.result_round || null,
+        result_round: round.result_round || null
       })
       .eq("id", round.id);
 
@@ -132,7 +168,8 @@ export default function EventDashboard() {
       alert("Erro ao salvar round");
       return;
     }
-    alert("✅ Round salvo!");
+
+    alert("Round salvo!");
     loadRounds();
   }
 
@@ -190,12 +227,13 @@ export default function EventDashboard() {
         <button style={s.btn} onClick={() => navigate("/")}>🏠 Home</button>
       </div>
 
-      {/* ==================== CONTROLE GERAL DO EVENTO (TOPO) ==================== */}
+      {/* EVENT CONTROLS */}
       <div style={s.card}>
         <h3>Controle Geral do Evento</h3>
+
         <div style={s.row}>
           <div>
-            <label><strong>Status do Evento:</strong></label><br />
+            <label><strong>Status</strong></label><br />
             <select
               value={event?.status || "STRUCTURE"}
               onChange={(e) => updateEventField("status", e.target.value)}
@@ -212,22 +250,25 @@ export default function EventDashboard() {
           </div>
 
           <div>
-            <label><strong>is_open (Libera palpites no Ranking):</strong></label><br />
+            <label><strong>is_open</strong></label><br />
             <select
               value={event?.is_open ? "true" : "false"}
-              onChange={(e) => updateEventField("is_open", e.target.value === "true")}
+              onChange={(e) =>
+                updateEventField("is_open", e.target.value === "true")
+              }
               style={s.input}
             >
-              <option value="false">false - Fechado</option>
-              <option value="true">true - Aberto (Palpites visíveis)</option>
+              <option value="false">Fechado</option>
+              <option value="true">Aberto</option>
             </select>
           </div>
         </div>
       </div>
 
-      {/* Estrutura do Evento */}
+      {/* PHASES */}
       <div style={s.card}>
         <h3>Estrutura do Evento</h3>
+
         <div style={s.row}>
           <select
             style={s.input}
@@ -237,107 +278,120 @@ export default function EventDashboard() {
               setViewLevel("phases");
             }}
           >
-            <option value="">Selecione uma fase</option>
+            <option value="">Selecione fase</option>
             {phases.map((p) => (
               <option key={p.id} value={p.id}>
                 Fase {p.phase_number} - {p.phase_name}
               </option>
             ))}
           </select>
+
           <input
             style={s.input}
             value={selectedPhase?.phase_name || ""}
-            onChange={(e) => updatePhaseField("phase_name", e.target.value)}
-            placeholder="Nome da fase"
+            onChange={(e) =>
+              updatePhaseField("phase_name", e.target.value)
+            }
+            placeholder="Nome"
           />
+
           <input
             style={s.input}
             type="number"
             value={selectedPhase?.num_rounds || 0}
-            onChange={(e) => updatePhaseField("num_rounds", Number(e.target.value))}
-            placeholder="Qtd Rounds"
+            onChange={(e) =>
+              updatePhaseField("num_rounds", Number(e.target.value))
+            }
           />
+
           <button style={s.btn} onClick={savePhase}>💾</button>
-          <button style={s.btn} onClick={syncRounds}>⚽ Carregar Rounds</button>
+          <button style={s.btn} onClick={syncRounds}>⚽ Rounds</button>
         </div>
       </div>
 
-      {/* Rounds */}
+      {/* ROUNDS */}
       {viewLevel === "rounds" && selectedPhase && (
         <div style={s.card}>
-          <h3>Rounds - {selectedPhase.phase_name}</h3>
-          <button style={s.btn} onClick={() => setViewLevel("phases")}>⬅ Voltar</button>
-          <hr />
+          <h3>Rounds</h3>
+          <button style={s.btn} onClick={() => setViewLevel("phases")}>
+            ⬅ Voltar
+          </button>
 
-          {rounds.map((round, index) => (
-            <div
-              key={round.id}
-              style={{
-                ...s.row,
-                borderBottom: "1px solid #eee",
-                paddingBottom: 15,
-                marginBottom: 15
-              }}
-            >
-              <span><strong>Round {index + 1}</strong></span>
+          {rounds.map((round, i) => (
+            <div key={round.id} style={s.row}>
+              <span>Round {i + 1}</span>
 
               <input
                 style={s.input}
-                placeholder="Nome do Round"
                 value={round.round_name || ""}
-                onChange={(e) => updateRoundField(round.id, "round_name", e.target.value)}
+                onChange={(e) =>
+                  updateRoundField(round.id, "round_name", e.target.value)
+                }
               />
 
               <input
-                style={s.input}
                 type="date"
+                style={s.input}
                 value={round.round_date || ""}
-                onChange={(e) => updateRoundField(round.id, "round_date", e.target.value)}
+                onChange={(e) =>
+                  updateRoundField(round.id, "round_date", e.target.value)
+                }
               />
 
               <input
-                style={s.input}
                 type="time"
+                style={s.input}
                 value={round.time_round || ""}
-                onChange={(e) => updateRoundField(round.id, "time_round", e.target.value)}
+                onChange={(e) =>
+                  updateRoundField(round.id, "time_round", e.target.value)
+                }
               />
 
               <input
                 style={s.input}
-                placeholder="Local"
                 value={round.local || ""}
-                onChange={(e) => updateRoundField(round.id, "local", e.target.value)}
+                onChange={(e) =>
+                  updateRoundField(round.id, "local", e.target.value)
+                }
               />
 
               <input
                 style={s.input}
                 type="number"
-                min={1}
                 value={round.event_parts_count || 2}
-                onChange={(e) => updateRoundField(round.id, "event_parts_count", Number(e.target.value))}
+                onChange={(e) =>
+                  updateRoundField(
+                    round.id,
+                    "event_parts_count",
+                    Number(e.target.value)
+                  )
+                }
               />
 
               <input
-                style={{
-                  ...s.input,
-                  fontWeight: "bold",
-                  width: 110,
-                  textAlign: "center"
-                }}
-                placeholder="3x1"
+                style={s.input}
                 value={round.result_round || ""}
-                onChange={(e) => updateRoundField(round.id, "result_round", e.target.value)}
+                onChange={(e) =>
+                  updateRoundField(round.id, "result_round", e.target.value)
+                }
               />
 
-              <button onClick={() => saveRound(round)} style={s.btn}>💾</button>
-              <button onClick={() => deleteRound(round)} style={s.btn}>🗑</button>
-              <button style={s.btn} onClick={() =>
-                    navigate(
-                      `/admin/cadastros/parts?round=${round.id}`
-                )  }
-                >
+              <button style={s.btn} onClick={() => saveRound(round)}>
+                💾
+              </button>
+
+              <button style={s.btn} onClick={() => deleteRound(round)}>
+                🗑
+              </button>
+
+              <button
+                style={s.btn}
+                onClick={() =>
+                  navigate(`/admin/cadastros/parts?round=${round.id}`)
+                }
+              >
                 ⚽ Parts
-               </button>
+              </button>
             </div>
           ))}
         </div>

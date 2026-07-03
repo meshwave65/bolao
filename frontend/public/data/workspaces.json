@@ -21,6 +21,17 @@
     }
   },
   {
+    "workspace": "Zé Bangu",
+    "workspace_id": "cec020f0-ed86-4658-b2e3-415556495844",
+    "event": {
+      "id": "8bdf0d5e-d1e4-45d8-8375-8602828dc43d",
+      "name": "BOLÃO DO ZÉ BANGU 012",
+      "status": "OPEN",
+      "is_open": "false",
+      "code": "45CM0I0Y"
+    }
+  },
+  {
     "workspace": "Real Shape",
     "workspace_id": "d9fdccee-fe88-46d5-b368-4f993b725314",
     "event": {

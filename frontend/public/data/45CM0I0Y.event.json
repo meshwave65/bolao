@@ -1,0 +1,419 @@
+{
+  "code": "45CM0I0Y",
+  "event_uuid": "8bdf0d5e-d1e4-45d8-8375-8602828dc43d",
+  "is_open": false,
+  "event_name": "BOLÃO DO ZÉ BANGU 012",
+  "workspace_name": "Zé Bangu",
+  "confirm_phone": "5521964906217",
+  "workspace_uuid": "cec020f0-ed86-4658-b2e3-415556495844",
+  "phase_uuid": "4adc668f-329b-4f32-bcf8-fe829cda8ce9",
+  "rounds": [
+    {
+      "round_uuid": "beec239b-8401-435f-b11e-e3ea8dc4e471",
+      "round_name": "Colombia x Gana",
+      "round_order": 1,
+      "round_index": 1,
+      "local": "Estádio de Kansas City - EUA",
+      "round_date": "2026-07-03",
+      "time_round": "22:30:00",
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "d519bab7-b82b-4b1d-84be-650c29a2d38f",
+          "round_uuid": "beec239b-8401-435f-b11e-e3ea8dc4e471",
+          "team_uuid": "59463bf8-5083-4cda-9203-bd4a9a0fc277",
+          "value": null,
+          "created_at": "2026-07-03T02:22:24.694679",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "COL",
+            "teams_name": "Colômbia"
+          }
+        },
+        {
+          "id": "cb85a1f4-8ffe-4421-afe9-15f83d1e14c0",
+          "round_uuid": "beec239b-8401-435f-b11e-e3ea8dc4e471",
+          "team_uuid": "b6282b77-1d55-4aae-b0c0-729414c5f36b",
+          "value": null,
+          "created_at": "2026-07-03T02:22:24.694679",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "GHA",
+            "teams_name": "Ghana"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "59c92898-581f-4d2f-87ba-dba25f711ed1",
+      "round_name": "Canadá vs Marrocos",
+      "round_order": 2,
+      "round_index": 2,
+      "local": "Estadio de Houston - EUA",
+      "round_date": "2026-07-04",
+      "time_round": "14:00:00",
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "c2f7843f-d29f-4582-a8bd-069e9380c24c",
+          "round_uuid": "59c92898-581f-4d2f-87ba-dba25f711ed1",
+          "team_uuid": "a039c85b-315d-4bd7-9b64-f82591a5ae70",
+          "value": null,
+          "created_at": "2026-07-03T02:36:41.432294",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "CAN",
+            "teams_name": "Canadá"
+          }
+        },
+        {
+          "id": "0325baa6-2d91-42f5-a334-9d13ed58fd69",
+          "round_uuid": "59c92898-581f-4d2f-87ba-dba25f711ed1",
+          "team_uuid": "fcc5e78f-6f00-4748-bade-b3c1d8044f47",
+          "value": null,
+          "created_at": "2026-07-03T02:36:41.432294",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "MAR",
+            "teams_name": "Marrocos"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "17e18baf-a70b-4cc8-a5b6-7f934520557a",
+      "round_name": "Paraguai vs França",
+      "round_order": 3,
+      "round_index": 3,
+      "local": "Estadio de Filadelphia - EUA",
+      "round_date": "2026-07-04",
+      "time_round": "18:00:00",
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "96425b4d-deb0-45f7-ad69-99548e834a88",
+          "round_uuid": "17e18baf-a70b-4cc8-a5b6-7f934520557a",
+          "team_uuid": "c6cf8793-4b63-438e-b55a-d081a083cdb1",
+          "value": null,
+          "created_at": "2026-07-03T02:32:48.212826",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "PAR",
+            "teams_name": "Paraguai"
+          }
+        },
+        {
+          "id": "44ec4154-90b2-48e0-97f6-4eb811568103",
+          "round_uuid": "17e18baf-a70b-4cc8-a5b6-7f934520557a",
+          "team_uuid": "70b57cb7-7bf1-4d10-b085-1e1ad833c955",
+          "value": null,
+          "created_at": "2026-07-03T02:32:48.212826",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "FRA",
+            "teams_name": "França"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "8bbd61e9-1429-43e1-8295-76669e19a9a2",
+      "round_name": "Criciuma vs Sport",
+      "round_order": 4,
+      "round_index": 4,
+      "local": null,
+      "round_date": null,
+      "time_round": null,
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "c0f93b6b-227a-4cd3-adff-8faf8a479bb5",
+          "round_uuid": "8bbd61e9-1429-43e1-8295-76669e19a9a2",
+          "team_uuid": "2e2e3b88-a32d-4f8e-ab43-19fba32550ce",
+          "value": null,
+          "created_at": "2026-07-03T03:03:32.309281",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "CRI",
+            "teams_name": "Criciuma"
+          }
+        },
+        {
+          "id": "50ba4e80-be92-4a88-ae02-54afcf61dcbd",
+          "round_uuid": "8bbd61e9-1429-43e1-8295-76669e19a9a2",
+          "team_uuid": "7e6560e4-a1c7-4b9b-b04c-c4770182740d",
+          "value": null,
+          "created_at": "2026-07-03T03:03:32.309281",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "SPR",
+            "teams_name": "Sport Recife"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "5bf46493-e931-493f-898b-cad959cc007b",
+      "round_name": "Londrina vs CRB",
+      "round_order": 5,
+      "round_index": 5,
+      "local": null,
+      "round_date": null,
+      "time_round": null,
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "b70d4106-70eb-4fd1-bd8f-4c800b08d06f",
+          "round_uuid": "5bf46493-e931-493f-898b-cad959cc007b",
+          "team_uuid": "8820106a-5eb1-491f-8aca-33411d820d8c",
+          "value": null,
+          "created_at": "2026-07-03T03:04:24.179547",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "LDR",
+            "teams_name": "Londrina"
+          }
+        },
+        {
+          "id": "efca5263-b5a0-4b63-aa4d-4a11dce9b89e",
+          "round_uuid": "5bf46493-e931-493f-898b-cad959cc007b",
+          "team_uuid": "1f5db265-b5c4-4111-a0a7-b5176c237e45",
+          "value": null,
+          "created_at": "2026-07-03T03:04:24.179547",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "CRB",
+            "teams_name": "CRB"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "846f666e-f1a2-4e1e-a502-457bf8b796fd",
+      "round_name": "N. Horizontino vs Atletico de GO",
+      "round_order": 6,
+      "round_index": 6,
+      "local": null,
+      "round_date": null,
+      "time_round": null,
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "b090e38e-01c0-4f1f-be32-f3a052504cf6",
+          "round_uuid": "846f666e-f1a2-4e1e-a502-457bf8b796fd",
+          "team_uuid": "8f4d9e81-bf4c-4731-882e-43277aa48504",
+          "value": null,
+          "created_at": "2026-07-03T02:55:33.976725",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "NHZ",
+            "teams_name": "Novo Horizontino"
+          }
+        },
+        {
+          "id": "d30fd401-c75b-447d-90d3-5fd83e017a58",
+          "round_uuid": "846f666e-f1a2-4e1e-a502-457bf8b796fd",
+          "team_uuid": "2adb005f-cc87-4fe4-a994-185463b10589",
+          "value": null,
+          "created_at": "2026-07-03T02:55:33.976725",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "ATG",
+            "teams_name": "Atletico de Goias"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "172457cd-0500-438b-89ca-73c41f81ab16",
+      "round_name": "Goias vs Ceará",
+      "round_order": 7,
+      "round_index": 7,
+      "local": null,
+      "round_date": null,
+      "time_round": null,
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "1f7b57e7-a597-40c8-b720-3815ccc15a4c",
+          "round_uuid": "172457cd-0500-438b-89ca-73c41f81ab16",
+          "team_uuid": "2a851cbe-fbc2-40b5-ac6b-51a32676a41a",
+          "value": null,
+          "created_at": "2026-07-03T02:56:46.507429",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "GOI",
+            "teams_name": "Goias"
+          }
+        },
+        {
+          "id": "f00b0bbe-9611-45cf-ace4-181faa6a47c6",
+          "round_uuid": "172457cd-0500-438b-89ca-73c41f81ab16",
+          "team_uuid": "14f9f8c2-d4c0-4317-a19b-39c0e69093cb",
+          "value": null,
+          "created_at": "2026-07-03T02:56:46.507429",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "CEA",
+            "teams_name": "Ceará"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "92d5c579-0421-43ef-8aca-07b74004e2e0",
+      "round_name": "Brasil vs Noruega",
+      "round_order": 8,
+      "round_index": 8,
+      "local": "Estadio de Nova York - EUA",
+      "round_date": "2026-07-05",
+      "time_round": "17:00:00",
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "cf8e324a-5b2f-4c53-a4eb-96f4f913b8b3",
+          "round_uuid": "92d5c579-0421-43ef-8aca-07b74004e2e0",
+          "team_uuid": "1603705a-6977-4261-8c18-c4cce4fe8830",
+          "value": null,
+          "created_at": "2026-07-03T02:38:08.096144",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "BRA",
+            "teams_name": "Brasil"
+          }
+        },
+        {
+          "id": "aabfe3f6-692e-430b-85f6-0cee3b55ee4a",
+          "round_uuid": "92d5c579-0421-43ef-8aca-07b74004e2e0",
+          "team_uuid": "03d8a029-3150-4c4a-be70-80ec064d7ed6",
+          "value": null,
+          "created_at": "2026-07-03T02:38:08.096144",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "NOR",
+            "teams_name": "Noruega"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "1aa6bc8a-a812-499e-a012-5d45c7728424",
+      "round_name": "México vs Inglaterra",
+      "round_order": 9,
+      "round_index": 9,
+      "local": "Estadio do Mexico - Mexico",
+      "round_date": "2026-07-05",
+      "time_round": "21:00:00",
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "71d6b861-f271-4120-938d-4adcd04d1058",
+          "round_uuid": "1aa6bc8a-a812-499e-a012-5d45c7728424",
+          "team_uuid": "2fdfc589-2fda-4450-af49-b668d3fd7dbd",
+          "value": null,
+          "created_at": "2026-07-03T02:42:33.769282",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "MEX",
+            "teams_name": "México"
+          }
+        },
+        {
+          "id": "9939201a-db93-4907-a99b-745d0fa1b9ba",
+          "round_uuid": "1aa6bc8a-a812-499e-a012-5d45c7728424",
+          "team_uuid": "ae978a90-fe9c-4c13-bf61-819380a4bb0f",
+          "value": null,
+          "created_at": "2026-07-03T02:42:33.769282",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "ENG",
+            "teams_name": "Inglaterra"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "f8f787e4-c909-4307-8428-18565783015d",
+      "round_name": "EUA vs Bélgica",
+      "round_order": 10,
+      "round_index": 10,
+      "local": "Estadio de Seatlle - EUA",
+      "round_date": "2026-07-06",
+      "time_round": "21:00:00",
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "3d105d62-3cdd-47f7-960a-b2950634c77b",
+          "round_uuid": "f8f787e4-c909-4307-8428-18565783015d",
+          "team_uuid": "56a4f023-a473-4fca-b73c-b362e15c92c8",
+          "value": null,
+          "created_at": "2026-07-03T02:39:46.04735",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "USA",
+            "teams_name": "EUA"
+          }
+        },
+        {
+          "id": "a0ced808-898e-4277-95e0-cc1d5e22f7f8",
+          "round_uuid": "f8f787e4-c909-4307-8428-18565783015d",
+          "team_uuid": "66ad62e8-6487-4ca9-bc23-992ddaf85f94",
+          "value": null,
+          "created_at": "2026-07-03T02:39:46.04735",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "BEL",
+            "teams_name": "Bélgica"
+          }
+        }
+      ]
+    },
+    {
+      "round_uuid": "2efbb310-5fae-44a1-a3e4-f009bbda8b14",
+      "round_name": "Botafogo SP vs Avai",
+      "round_order": 11,
+      "round_index": 11,
+      "local": null,
+      "round_date": "2026-07-06",
+      "time_round": "19:00:00",
+      "score": null,
+      "result": null,
+      "parts": [
+        {
+          "id": "0344151d-4f21-409d-8a70-5111b620088c",
+          "round_uuid": "2efbb310-5fae-44a1-a3e4-f009bbda8b14",
+          "team_uuid": "2378a9bb-0ca1-4f22-8efd-f556bf8e0c8f",
+          "value": null,
+          "created_at": "2026-07-03T03:01:50.901964",
+          "sequence_part": 1,
+          "teams": {
+            "teams_code": "BRP",
+            "teams_name": "Botafogo de Ribeirão Preto"
+          }
+        },
+        {
+          "id": "e7572173-90ae-4cbf-910b-976c13675cb5",
+          "round_uuid": "2efbb310-5fae-44a1-a3e4-f009bbda8b14",
+          "team_uuid": "ae2150cb-b3fb-4afc-a206-ad759106edc2",
+          "value": null,
+          "created_at": "2026-07-03T03:01:50.901964",
+          "sequence_part": 2,
+          "teams": {
+            "teams_code": "AVI",
+            "teams_name": "Avai"
+          }
+        }
+      ]
+    }
+  ]
+}
