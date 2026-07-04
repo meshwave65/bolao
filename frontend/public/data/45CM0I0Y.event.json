@@ -16,8 +16,8 @@
       "local": "Estádio de Kansas City - EUA",
       "round_date": "2026-07-03",
       "time_round": "22:30:00",
-      "score": null,
-      "result": null,
+      "score": "1x0",
+      "result": "1",
       "parts": [
         {
           "id": "d519bab7-b82b-4b1d-84be-650c29a2d38f",
@@ -53,8 +53,8 @@
       "local": "Estadio de Houston - EUA",
       "round_date": "2026-07-04",
       "time_round": "14:00:00",
-      "score": null,
-      "result": null,
+      "score": "0x3",
+      "result": "2",
       "parts": [
         {
           "id": "c2f7843f-d29f-4582-a8bd-069e9380c24c",
@@ -90,8 +90,8 @@
       "local": "Estadio de Filadelphia - EUA",
       "round_date": "2026-07-04",
       "time_round": "18:00:00",
-      "score": null,
-      "result": null,
+      "score": "0x1",
+      "result": "2",
       "parts": [
         {
           "id": "96425b4d-deb0-45f7-ad69-99548e834a88",
@@ -125,10 +125,10 @@
       "round_order": 4,
       "round_index": 4,
       "local": null,
-      "round_date": null,
-      "time_round": null,
-      "score": null,
-      "result": null,
+      "round_date": "2026-07-04",
+      "time_round": "18:00:00",
+      "score": "1x0",
+      "result": "1",
       "parts": [
         {
           "id": "c0f93b6b-227a-4cd3-adff-8faf8a479bb5",
@@ -162,10 +162,10 @@
       "round_order": 5,
       "round_index": 5,
       "local": null,
-      "round_date": null,
-      "time_round": null,
-      "score": null,
-      "result": null,
+      "round_date": "2026-07-04",
+      "time_round": "18:00:00",
+      "score": "5x0",
+      "result": "1",
       "parts": [
         {
           "id": "b70d4106-70eb-4fd1-bd8f-4c800b08d06f",
@@ -199,10 +199,10 @@
       "round_order": 6,
       "round_index": 6,
       "local": null,
-      "round_date": null,
-      "time_round": null,
-      "score": null,
-      "result": null,
+      "round_date": "2026-07-04",
+      "time_round": "18:00:00",
+      "score": "3x0",
+      "result": "1",
       "parts": [
         {
           "id": "b090e38e-01c0-4f1f-be32-f3a052504cf6",
@@ -236,8 +236,8 @@
       "round_order": 7,
       "round_index": 7,
       "local": null,
-      "round_date": null,
-      "time_round": null,
+      "round_date": "2026-07-04",
+      "time_round": "20:00:00",
       "score": null,
       "result": null,
       "parts": [

@@ -32,34 +32,40 @@ function AppInitializer() {
 function AppLayout() {
   const location = useLocation();
 
-  const hideBottomNav = location.pathname === "/admin-login";
+  // páginas que NÃO devem receber padding da "casca"
+  const fullBleedRoutes = ["/admin-login"];
+
+  const isFullBleed = fullBleedRoutes.includes(location.pathname);
 
   return (
     <div
       style={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        overflow: "hidden",
-        background: "#fff",
+        minHeight: "100vh",
+        boxSizing: "border-box",
+
+        // 👇 aqui está o ponto crítico
+        paddingTop: isFullBleed ? 0 : "70px",
+        paddingBottom: isFullBleed ? 0 : "75px",
       }}
     >
-      <Header />
+      {/* Header só aparece fora de telas fullBleed se quiser */}
+      {!isFullBleed && <Header />}
 
       <main
         style={{
-          flex: 1,
-          minHeight: 0,
-          overflowY: "auto",
-          padding: 16,
-          boxSizing: "border-box",
+          minHeight: isFullBleed
+            ? "100vh"
+            : "calc(100vh - 145px)",
+
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <Outlet />
       </main>
 
-      {!hideBottomNav && <BottomNav />}
+      {/* BottomNav só aparece fora de fullBleed */}
+      {!isFullBleed && <BottomNav />}
     </div>
   );
 }

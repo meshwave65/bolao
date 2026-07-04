@@ -30,12 +30,11 @@ import CadastroRounds from "../pages/admin/CadastrosRounds";
 import CadastroParts from "../pages/admin/CadastrosParts";
 import MapaPalpites from "../pages/admin/MapaPalpites";
 
-/* ================= PUBLIC ROUTES ================= */
 export default function AppRoutes() {
   return (
     <Routes>
 
-      {/* ================= PUBLIC APP (WITH SHELL) ================= */}
+      {/* ================= PUBLIC APP (SHELL ÚNICO) ================= */}
       <Route element={<AppShell />}>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -43,16 +42,12 @@ export default function AppRoutes() {
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/register" element={<Register />} />
         <Route path="/events" element={<EventHome />} />
-      </Route>
 
-      {/* ================= ADMIN AUTH (SEPARATE LAYOUT) ================= */}
-      <Route
-        element={<AdminAuthLayout />}
-      >
+        {/* ADMIN LOGIN TAMBÉM DENTRO DA CASCA */}
         <Route path="/admin-login" element={<AdminLogin />} />
       </Route>
 
-      {/* ================= ADMIN PROTECTED AREA ================= */}
+      {/* ================= ADMIN PROTECTED ================= */}
       <Route
         path="/admin/*"
         element={
@@ -61,17 +56,14 @@ export default function AppRoutes() {
           </AdminGuard>
         }
       >
-        {/* DASHBOARD */}
         <Route index element={<Admin />} />
 
-        {/* BASIC SECTIONS */}
         <Route path="resultados" element={<div>Resultados</div>} />
         <Route path="usuarios" element={<div>Usuários</div>} />
         <Route path="consultas" element={<div>Consultas</div>} />
 
         <Route path="palpites" element={<MapaPalpites />} />
 
-        {/* CADASTROS */}
         <Route path="cadastros" element={<CadastrosHome />} />
         <Route path="cadastros/times" element={<CadastrosTimes />} />
         <Route path="cadastros/eventos" element={<CadastrosEventos />} />
@@ -79,7 +71,6 @@ export default function AppRoutes() {
         <Route path="cadastros/rodadas" element={<CadastrosRodadas />} />
         <Route path="cadastros/parts" element={<CadastroParts />} />
 
-        {/* EVENT STRUCTURE */}
         <Route
           path="cadastros/eventos/:eventId/estrutura"
           element={<EventDashboard />}
@@ -89,34 +80,8 @@ export default function AppRoutes() {
           path="cadastros/eventos/:eventId/rounds"
           element={<CadastroRounds />}
         />
-
-        {/* LEGACY ROUTE */}
-        <Route
-          path="cadastros/eventos/:eventId/parts"
-          element={<CadastroParts />}
-        />
       </Route>
 
     </Routes>
-  );
-}
-
-/* ================= ADMIN AUTH LAYOUT ================= */
-import { Outlet } from "react-router-dom";
-
-function AdminAuthLayout() {
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 20,
-        boxSizing: "border-box",
-      }}
-    >
-      <Outlet />
-    </div>
   );
 }
