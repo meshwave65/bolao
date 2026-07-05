@@ -1,7 +1,7 @@
 {
   "code": "45CM0I0Y",
   "event_uuid": "8bdf0d5e-d1e4-45d8-8375-8602828dc43d",
-  "is_open": false,
+  "is_open": true,
   "event_name": "BOLÃO DO ZÉ BANGU 012",
   "workspace_name": "Zé Bangu",
   "confirm_phone": "5521964906217",
@@ -23,7 +23,7 @@
           "id": "d519bab7-b82b-4b1d-84be-650c29a2d38f",
           "round_uuid": "beec239b-8401-435f-b11e-e3ea8dc4e471",
           "team_uuid": "59463bf8-5083-4cda-9203-bd4a9a0fc277",
-          "value": null,
+          "value": "1",
           "created_at": "2026-07-03T02:22:24.694679",
           "sequence_part": 1,
           "teams": {
@@ -35,7 +35,7 @@
           "id": "cb85a1f4-8ffe-4421-afe9-15f83d1e14c0",
           "round_uuid": "beec239b-8401-435f-b11e-e3ea8dc4e471",
           "team_uuid": "b6282b77-1d55-4aae-b0c0-729414c5f36b",
-          "value": null,
+          "value": "0",
           "created_at": "2026-07-03T02:22:24.694679",
           "sequence_part": 2,
           "teams": {
@@ -60,7 +60,7 @@
           "id": "c2f7843f-d29f-4582-a8bd-069e9380c24c",
           "round_uuid": "59c92898-581f-4d2f-87ba-dba25f711ed1",
           "team_uuid": "a039c85b-315d-4bd7-9b64-f82591a5ae70",
-          "value": null,
+          "value": "0",
           "created_at": "2026-07-03T02:36:41.432294",
           "sequence_part": 1,
           "teams": {
@@ -72,7 +72,7 @@
           "id": "0325baa6-2d91-42f5-a334-9d13ed58fd69",
           "round_uuid": "59c92898-581f-4d2f-87ba-dba25f711ed1",
           "team_uuid": "fcc5e78f-6f00-4748-bade-b3c1d8044f47",
-          "value": null,
+          "value": "3",
           "created_at": "2026-07-03T02:36:41.432294",
           "sequence_part": 2,
           "teams": {
@@ -97,7 +97,7 @@
           "id": "96425b4d-deb0-45f7-ad69-99548e834a88",
           "round_uuid": "17e18baf-a70b-4cc8-a5b6-7f934520557a",
           "team_uuid": "c6cf8793-4b63-438e-b55a-d081a083cdb1",
-          "value": null,
+          "value": "0",
           "created_at": "2026-07-03T02:32:48.212826",
           "sequence_part": 1,
           "teams": {
@@ -109,7 +109,7 @@
           "id": "44ec4154-90b2-48e0-97f6-4eb811568103",
           "round_uuid": "17e18baf-a70b-4cc8-a5b6-7f934520557a",
           "team_uuid": "70b57cb7-7bf1-4d10-b085-1e1ad833c955",
-          "value": null,
+          "value": "1",
           "created_at": "2026-07-03T02:32:48.212826",
           "sequence_part": 2,
           "teams": {
@@ -134,7 +134,7 @@
           "id": "c0f93b6b-227a-4cd3-adff-8faf8a479bb5",
           "round_uuid": "8bbd61e9-1429-43e1-8295-76669e19a9a2",
           "team_uuid": "2e2e3b88-a32d-4f8e-ab43-19fba32550ce",
-          "value": null,
+          "value": "1",
           "created_at": "2026-07-03T03:03:32.309281",
           "sequence_part": 1,
           "teams": {
@@ -146,7 +146,7 @@
           "id": "50ba4e80-be92-4a88-ae02-54afcf61dcbd",
           "round_uuid": "8bbd61e9-1429-43e1-8295-76669e19a9a2",
           "team_uuid": "7e6560e4-a1c7-4b9b-b04c-c4770182740d",
-          "value": null,
+          "value": "0",
           "created_at": "2026-07-03T03:03:32.309281",
           "sequence_part": 2,
           "teams": {
@@ -171,7 +171,7 @@
           "id": "b70d4106-70eb-4fd1-bd8f-4c800b08d06f",
           "round_uuid": "5bf46493-e931-493f-898b-cad959cc007b",
           "team_uuid": "8820106a-5eb1-491f-8aca-33411d820d8c",
-          "value": null,
+          "value": "5",
           "created_at": "2026-07-03T03:04:24.179547",
           "sequence_part": 1,
           "teams": {
@@ -183,7 +183,7 @@
           "id": "efca5263-b5a0-4b63-aa4d-4a11dce9b89e",
           "round_uuid": "5bf46493-e931-493f-898b-cad959cc007b",
           "team_uuid": "1f5db265-b5c4-4111-a0a7-b5176c237e45",
-          "value": null,
+          "value": "0",
           "created_at": "2026-07-03T03:04:24.179547",
           "sequence_part": 2,
           "teams": {
@@ -208,7 +208,7 @@
           "id": "b090e38e-01c0-4f1f-be32-f3a052504cf6",
           "round_uuid": "846f666e-f1a2-4e1e-a502-457bf8b796fd",
           "team_uuid": "8f4d9e81-bf4c-4731-882e-43277aa48504",
-          "value": null,
+          "value": "3",
           "created_at": "2026-07-03T02:55:33.976725",
           "sequence_part": 1,
           "teams": {
@@ -220,7 +220,7 @@
           "id": "d30fd401-c75b-447d-90d3-5fd83e017a58",
           "round_uuid": "846f666e-f1a2-4e1e-a502-457bf8b796fd",
           "team_uuid": "2adb005f-cc87-4fe4-a994-185463b10589",
-          "value": null,
+          "value": "0",
           "created_at": "2026-07-03T02:55:33.976725",
           "sequence_part": 2,
           "teams": {
@@ -238,8 +238,8 @@
       "local": null,
       "round_date": "2026-07-04",
       "time_round": "20:00:00",
-      "score": null,
-      "result": null,
+      "score": "2x0",
+      "result": "1",
       "parts": [
         {
           "id": "1f7b57e7-a597-40c8-b720-3815ccc15a4c",
